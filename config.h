@@ -10,11 +10,11 @@ static const char *fonts[] = { "monospace:size=11" };
 static const char dmenufont[] = "monospace:size=14";
 
 static const char *colors[][3] = {
-    /*                  tags      tags bg  inactive window border */
+    /*                  tags      tags bg  inactive client border */
     [SchemeNorm] = { "#BBBBBB", "#000000", "#000000" },
-    /*               title     title bg    active window border   */
+    /*               title     title bg    active client border   */
     [SchemeSel] = { "#FFFFFF", "#000000", "#F2F2F2" },
-    /*              active tag  active tag bg                                */
+    /*              active tag  active     tag bg                 */
     [SchemeAct] = { "#000000", "#F2F2F2", "#FF0000" },
 };
 
