@@ -78,7 +78,7 @@ static const char *dmenucmd[] = {
     NULL
 };
 
-static const char *termcmd[] = { "alacritty", NULL };
+static const char *termcmd[] = { "kitty", NULL };
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
