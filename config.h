@@ -9,13 +9,14 @@ static const int topbar = 1;         /* 0 means bottom bar */
 static const char *fonts[] = { "monospace:size=12" };
 static const char dmenufont[] = "monospace:size=14";
 
+/* #1771F1 #1EC9E8 #0260E8 */
 static const char *colors[][3] = {
     /*                 tags      tags bg  inactive client border   */
-    [SchemeNorm] = { "#BBBBBB", "#000000", "#000000" },
+    [SchemeNorm] = { "#BBBBBB", "#040404", "#000000" },
     /*               title     title bg    active client border    */
-    [SchemeSel]  = { "#FFFFFF", "#000000", "#F2F2F2" },
-    /*              active tag   active      tag bg                */
-    [SchemeAct]  = { "#000000", "#F2F2F2", "#FF0000" },
+    [SchemeSel]  = { "#FFFFFF", "#040404", "#1771F1" },
+    /*              active tag   active    useless                 */
+    [SchemeAct]  = { "#040404", "#f2f2f2", NULL },
 };
 
 /* tagging */
@@ -27,14 +28,16 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    { "Gimp", NULL, NULL, 0, 1, -1 },
-    { "Firefox", NULL, NULL, 1 << 8, 0, -1 },
+    // { "Gimp", NULL, NULL, 0, 1, -1 },
+    // { "Firefox", NULL, NULL, 1 << 8, 0, -1 },
+    { "discord",       NULL, NULL, 1 << 8, 0, -1 },
+    { "Google-chrome", NULL, NULL, 1 << 0, 0, -1 },
 };
 
 /* ========= layout(s) ========= */
 
 /* factor of master area size [0.05..0.95] */
-static const float mfact = 0.55; 
+static const float mfact = 0.6; 
 /* number of clients in master area */
 static const int nmaster = 1;    
 
@@ -46,7 +49,7 @@ static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[T]", tile }, /* first entry is default */
+    { "", tile }, /* first entry is default */
     { "[F]", NULL }, /* no layout function means floating behavior */
     { "[M]", monocle },
 };
@@ -61,12 +64,6 @@ static const Layout layouts[] = {
         KEY, toggletag, { .ui = 1 << TAG }                                    \
     },
 
-// /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-// #define SHCMD(cmd)                                                            \/
-//     {                                                                         \/
-//         .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                  \/
-//     }
-
 /* ========= commands ========= */
 /* component of dmenucmd, manipulated in spawn() */
 static char dmenumon[2] = "0"; 
@@ -74,10 +71,10 @@ static const char *dmenucmd[] = {
     "dmenu_run",
     "-m",  dmenumon,
     "-fn", dmenufont,
-    "-nb", "#000000",
-    "-nf", "#FFFFFF",
-    "-sb", "#FFFFFF",
-    "-sf", "#000000",
+    "-nb", "#040404",
+    "-nf", "#f2f2f2",
+    "-sb", "#f2f2f2",
+    "-sf", "#040404",
     NULL
 };
 
@@ -104,7 +101,7 @@ static Key keys[] = {
     { MODKEY,             XK_m,          setlayout,             { .v = &layouts[2] } },
     { MODKEY,             XK_space,      setlayout,             { 0 } },
     { MODKEY | ShiftMask, XK_space,      togglefloating,        { 0 } },
-    { MODKEY,             XK_0,          view,                  { .ui = ~0 } },
+    /* { MODKEY,             XK_0,          view,                  { .ui = ~0 } }, */
     { MODKEY | ShiftMask, XK_0,          tag,                   { .ui = ~0 } },
     { MODKEY,             XK_comma,      focusmon,              { .i = -1 } },
     { MODKEY,             XK_period,     focusmon,              { .i = +1 } },
