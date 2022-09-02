@@ -14,7 +14,7 @@ static const char *colors[][3] = {
     /*                 tags      tags bg  inactive client border   */
     [SchemeNorm] = { "#BBBBBB", "#040404", "#000000" },
     /*               title     title bg    active client border    */
-    [SchemeSel]  = { "#FFFFFF", "#040404", "#1771F1" },
+    [SchemeSel]  = { "#FFFFFF", "#040404", "#FFD600" },
     /*              active tag   active    useless                 */
     [SchemeAct]  = { "#040404", "#f2f2f2", NULL },
 };
@@ -32,6 +32,7 @@ static const Rule rules[] = {
     // { "Firefox", NULL, NULL, 1 << 8, 0, -1 },
     { "discord",       NULL, NULL, 1 << 8, 0, -1 },
     { "Google-chrome", NULL, NULL, 1 << 0, 0, -1 },
+    { "Code",          NULL, NULL, 1 << 1, 0, -1 },
 };
 
 /* ========= layout(s) ========= */

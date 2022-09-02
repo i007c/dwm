@@ -186,9 +186,13 @@ void drw_clr_create(Drw *drw, Clr *dest, const char *clrname) {
     if (!drw || !dest || !clrname)
         return;
 
-    if (!XftColorAllocName(drw->dpy, DefaultVisual(drw->dpy, drw->screen),
-                           DefaultColormap(drw->dpy, drw->screen), clrname,
-                           dest))
+    if (!XftColorAllocName(
+        drw->dpy, 
+        DefaultVisual(drw->dpy, drw->screen),
+        DefaultColormap(drw->dpy, drw->screen), 
+        clrname,
+        dest
+    ))
         die("error, cannot allocate color '%s'", clrname);
 }
 
@@ -414,4 +418,36 @@ void drw_cur_free(Drw *drw, Cur *cursor) {
 
     XFreeCursor(drw->dpy, cursor->cursor);
     free(cursor);
+}
+
+
+Clr *get_border_color(Display *dpy) {
+    int screen = DefaultScreen(dpy);
+    Clr *dest;
+    char clrname[7];
+    FILE *bf;
+    dest = ecalloc(1, sizeof(XftColor));
+    
+    bf = fopen("/home/i007c/dwm_border_color", "r");
+
+    if (bf == NULL) {
+        die("border file is null");
+    }
+
+    if (fread(clrname, 7, 1, bf) == -1) {
+        die("read error");
+    }
+
+    fclose(bf);
+
+    if (!XftColorAllocName(
+        dpy, 
+        DefaultVisual(dpy, screen),
+        DefaultColormap(dpy, screen), 
+        clrname,
+        dest
+    ))
+        die("error, cannot allocate color in border_color '%s'", clrname);
+
+    return dest;
 }
