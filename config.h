@@ -14,7 +14,7 @@ static const char *colors[][3] = {
     /*                 tags      tags bg  inactive client border   */
     [SchemeNorm] = { "#BBBBBB", "#040404", "#000000" },
     /*               title     title bg    active client border    */
-    [SchemeSel]  = { "#FFFFFF", "#040404", "#FFD600" },
+    [SchemeSel]  = { "#FFFFFF", "#040404", "#DB6A0B" },
     /*              active tag   active    useless                 */
     [SchemeAct]  = { "#040404", "#f2f2f2", NULL },
 };
