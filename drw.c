@@ -94,26 +94,25 @@ void drw_free(Drw *drw) {
 /* This function is an implementation detail. Library users should use
  * drw_fontset_create instead.
  */
-static Fnt *xfont_create(Drw *drw, const char *fontname,
-                         FcPattern *fontpattern) {
+static Fnt *xfont_create(Drw *drw, const char *fname, FcPattern *fontpattern) {
     Fnt *font;
     XftFont *xfont = NULL;
     FcPattern *pattern = NULL;
 
-    if (fontname) {
+    if (fname) {
         /* Using the pattern found at font->xfont->pattern does not yield the
          * same substitution results as using the pattern returned by
          * FcNameParse; using the latter results in the desired fallback
          * behaviour whereas the former just results in missing-character
          * rectangles being drawn, at least with some fonts. */
-        if (!(xfont = XftFontOpenName(drw->dpy, drw->screen, fontname))) {
+        if (!(xfont = XftFontOpenName(drw->dpy, drw->screen, fname))) {
             fprintf(stderr, "error, cannot load font from name: '%s'\n",
-                    fontname);
+                    fname);
             return NULL;
         }
-        if (!(pattern = FcNameParse((FcChar8 *)fontname))) {
+        if (!(pattern = FcNameParse((FcChar8 *)fname))) {
             fprintf(stderr, "error, cannot parse font name to pattern: '%s'\n",
-                    fontname);
+                    fname);
             XftFontClose(drw->dpy, xfont);
             return NULL;
         }
@@ -134,9 +133,8 @@ static Fnt *xfont_create(Drw *drw, const char *fontname,
      * and lots more all over the internet.
      */
     FcBool iscol;
-    if (FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) ==
-            FcResultMatch &&
-        iscol) {
+    if (FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) == FcResultMatch
+        && iscol) {
         XftFontClose(drw->dpy, xfont);
         return NULL;
     }
