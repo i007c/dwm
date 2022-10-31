@@ -1,22 +1,15 @@
 include config.mk
 
-FILES = dwm drw util
+FILES = dwm drw util audio
 SRC = $(addprefix ./src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addsuffix .o, $(FILES))
 
-# SRC = drw.c dwm.c util.c
-# OBJ = ${SRC:.c=.o}
+${OBJ}: src/config.h config.mk
 
 all: dwm
 
 %.o: src/%.c
 	${CC} -c ${CFLAGS} $< -o $@
-
-
-${OBJ}: src/config.h config.mk
-
-# .c.o:
-# 	${CC} -c ${CFLAGS} $<
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
