@@ -2012,7 +2012,7 @@ void zoom(const Arg *arg) {
 
 int main(int argc, char *argv[]) {
     if (argc == 2 && !strcmp("-v", argv[1]))
-        die("dwm-6.2");
+        die("dwm-6.3");
     else if (argc != 1)
         die("usage: dwm [-v]");
     if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
@@ -2021,10 +2021,6 @@ int main(int argc, char *argv[]) {
         die("dwm: cannot open display");
     checkotherwm();
     setup();
-#ifdef __OpenBSD__
-    if (pledge("stdio rpath proc exec", NULL) == -1)
-        die("pledge");
-#endif /* __OpenBSD__ */
     scan();
     run();
     cleanup();
