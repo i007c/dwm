@@ -1,6 +1,6 @@
 include config.mk
 
-FILES = dwm drw util audio
+FILES = dwm drw util
 SRC = $(addprefix ./src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addsuffix .o, $(FILES))
 
