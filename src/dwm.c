@@ -766,8 +766,9 @@ void focus(Client *c) {
         detachstack(c);
         attachstack(c);
         grabbuttons(c, 1);
-        XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
-        // XSetWindowBorder(dpy, c->win, (*get_border_color(dpy)).pixel);
+        // XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
+        // DYNAMIC_BORDER_COLOR
+        XSetWindowBorder(dpy, c->win, (*get_border_color(dpy)).pixel);
         setfocus(c);
     } else {
         XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
@@ -1610,19 +1611,20 @@ void tile(Monitor *m) {
     else
         mw = m->ww;
 
-    for (i = 0, my = ty = g, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+    for (i = 0, my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
         if (i < m->nmaster) {
             r = MIN(n, m->nmaster) - i;
             h = (m->wh - my - gappx * (r - 1)) / r;
             resize(c, m->wx, m->wy + my, mw - (2 * c->bw), h - (2 * c->bw), 0);
-
             if (my + HEIGHT(c) + gappx < m->wh)
                 my += HEIGHT(c) + gappx;
         } else {
             r = n - i;
             h = (m->wh - ty - gappx * (r - 1)) / r;
-            resize(c, m->wx + mw + g, m->wy + ty, m->ww - mw - g - (2 * c->bw),
-                   h - (2 * c->bw), 0);
+            resize(
+                c, m->wx + mw + g, m->wy + ty, 
+                m->ww - mw - g - (2 * c->bw), h - (2 * c->bw), 0
+            );
             if (ty + HEIGHT(c) + gappx < m->wh)
                 ty += HEIGHT(c) + gappx;
         }

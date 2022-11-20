@@ -418,7 +418,7 @@ void drw_cur_free(Drw *drw, Cur *cursor) {
     free(cursor);
 }
 
-/*
+// DYNAMIC_BORDER_COLOR
 Clr *get_border_color(Display *dpy) {
     int screen = DefaultScreen(dpy);
     Clr *dest;
@@ -449,4 +449,3 @@ Clr *get_border_color(Display *dpy) {
 
     return dest;
 }
-*/

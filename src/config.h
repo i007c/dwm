@@ -1,7 +1,7 @@
 
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
-static const unsigned int gappx = 3;
+static const unsigned int borderpx = 0; /* border pixel of windows */
+static const unsigned int gappx = 5; // 3
 static const unsigned int snap = 32 * 2; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
 static const int topbar = 1;         /* 0 means bottom bar */
@@ -9,6 +9,7 @@ static const int topbar = 1;         /* 0 means bottom bar */
 static const char *fonts[] = { "monospace:size=12" };
 static const char dmenufont[] = "monospace:size=14";
 
+// ghost rider border: #DB6A0B orange
 /* #1771F1 #1EC9E8 #0260E8 */
 static const char *colors[][3] = {
     /*                 tags      tags bg  inactive client border   */
@@ -34,6 +35,7 @@ static const Rule rules[] = {
     { "Google-chrome", NULL, NULL, 1 << 0, 0, -1 },
     { "Code",          NULL, NULL, 1 << 1, 0, -1 },
     { "bunnyblade",    NULL, NULL, 1 << 3, 0, -1 },
+    { "kitty",         NULL, NULL, 1 << 2, 0, -1 },
 };
 
 /* ========= layout(s) ========= */
