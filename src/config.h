@@ -30,13 +30,13 @@ static const Rule rules[] = {
      *
      *  xprop | awk '/^WM_CLASS/{sub(/.* =/, "instance:"); sub(/,/, "\nclass:"); print} /^WM_NAME/{sub(/.* =/, "title:"); print}'
      */
-    /* class      instance    title       tags mask     isfloating   monitor */
-    { "discord",       NULL, NULL, 1 << 8, 0, -1 },
-    { "Google-chrome", NULL, NULL, 1 << 0, 0, -1 },
-    { "Code",          NULL, NULL, 1 << 1, 0, -1 },
-    { "bunnyblade",    NULL, NULL, 1 << 3, 0, -1 },
-    { "krita",         NULL, NULL, 1 << 4, 0, -1 },
-    // { "kitty",         NULL, NULL, 1 << 2, 0, -1 },
+    /* class           instance     title    tags   mask     isfloating   monitor */
+    { "discord",        NULL,       NULL,   1 << 8,   0,   -1 },
+    { "Google-chrome",  NULL,       NULL,   1 << 0,   0,   -1 },
+    { "Code",           NULL,       NULL,   1 << 1,   0,   -1 },
+    { "bunnyblade",     NULL,       NULL,   1 << 3,   0,   -1 },
+    { "krita",          NULL,       NULL,   1 << 4,   0,   -1 },
+    // { "kitty",          NULL,       NULL,   1 << 2,   0,   -1 },
 };
 
 /* ========= layout(s) ========= */
