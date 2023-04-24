@@ -57,3 +57,4 @@ dkms.conf
 # dwm ingnores
 dwm
 dwm.png
+.ccls-cache/
