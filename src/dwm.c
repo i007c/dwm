@@ -766,9 +766,7 @@ void focus(Client *c) {
         detachstack(c);
         attachstack(c);
         grabbuttons(c, 1);
-        // XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
-        // DYNAMIC_BORDER_COLOR
-        XSetWindowBorder(dpy, c->win, (*get_border_color(dpy)).pixel);
+        XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
         setfocus(c);
     } else {
         XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);

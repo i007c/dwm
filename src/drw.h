@@ -61,5 +61,3 @@ int drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h,
 void drw_map(Drw *drw, Window win, int x, int y, unsigned int w,
              unsigned int h);
 
-// DYNAMIC_BORDER_COLOR
-Clr *get_border_color(Display *dpy);
