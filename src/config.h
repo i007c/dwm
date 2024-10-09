@@ -32,7 +32,10 @@ static const Rule rules[] = {
      */
     /* class           instance     title    tags   mask     isfloating   monitor */
     { "discord",        NULL,       NULL,   1 << 8,   0,   -1 },
+    { "TelegramDesktop",NULL,       NULL,   1 << 7,   0,   -1 },
+    { "TeamSpeak 3",    NULL,       NULL,   1 << 6,   0,   -1 },
     { "Google-chrome",  NULL,       NULL,   1 << 0,   0,   -1 },
+    { "firefox",        NULL,       NULL,   1 << 0,   0,   -1 },
     { "Code",           NULL,       NULL,   1 << 1,   0,   -1 },
     { "bunnyblade",     NULL,       NULL,   1 << 3,   0,   -1 },
     { "krita",          NULL,       NULL,   1 << 4,   0,   -1 },
@@ -129,7 +132,7 @@ static Key keys[] = {
 static Button buttons[] = {
     /* click                event mask      button          function argument */
     { ClkWinTitle,     0,        Button2,   zoom,                    { 0 } },
-    { ClkStatusText,   0,        Button2,   spawn,                   { .v = termcmd } },
+    { ClkStatusText,   0,        Button1,   spawn,                   { .v = termcmd } },
     { ClkClientWin,    MODKEY,   Button1,   movemouse,               { 0 } },
     { ClkClientWin,    MODKEY,   Button2,   togglefloating,          { 0 } },
     { ClkClientWin,    MODKEY,   Button3,   resizemouse,             { 0 } },
