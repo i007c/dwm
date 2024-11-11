@@ -40,6 +40,7 @@ static const Rule rules[] = {
     { "bunnyblade",     NULL,       NULL,   1 << 3,   0,   -1 },
     { "krita",          NULL,       NULL,   1 << 4,   0,   -1 },
     { "vlc",            NULL,       NULL,   1 << 4,   0,   -1 },
+    { NULL, NULL,     "00-team-test-app",   1 << 2,   0,   -1 },
     // { "kitty",          NULL,       NULL,   1 << 2,   0,   -1 },
 };
 
