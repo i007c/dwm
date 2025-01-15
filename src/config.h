@@ -34,7 +34,7 @@ static const Rule rules[] = {
     { "discord",        NULL,       NULL,   1 << 8,   0,   -1 },
     { "TelegramDesktop",NULL,       NULL,   1 << 7,   0,   -1 },
     { "TeamSpeak 3",    NULL,       NULL,   1 << 6,   0,   -1 },
-    { "Google-chrome",  NULL,       NULL,   1 << 0,   0,   -1 },
+    { "Google-chrome",  NULL,       NULL,   1 << 3,   0,   -1 },
     { "firefox",        NULL,       NULL,   1 << 0,   0,   -1 },
     { "Code",           NULL,       NULL,   1 << 1,   0,   -1 },
     { "bunnyblade",     NULL,       NULL,   1 << 3,   0,   -1 },
